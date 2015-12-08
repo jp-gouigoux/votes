@@ -10,7 +10,7 @@ namespace VotesAPI
         private static List<Election> elections = new List<Election>() { new Election() { id = "BDE", votes = new List<Vote>() { new Vote() { choix = 1, prenom = "JP" } } } };
 
         [HttpPut("Elections")]
-        public Reset()
+        public void Reset()
         {
             elections = new List<Election>() { new Election() { id = "BDE", votes = new List<Vote>() { new Vote() { choix = 1, prenom = "JP" } } } };
         }
