@@ -8,6 +8,12 @@ namespace VotesAPI
     public class VotesController : Controller
     {   
         private static List<Election> elections = new List<Election>() { new Election() { id = "BDE", votes = new List<Vote>() { new Vote() { choix = 1, prenom = "JP" } } } };
+
+        [HttpPut("Elections")]
+        public Reset()
+        {
+            elections = new List<Election>() { new Election() { id = "BDE", votes = new List<Vote>() { new Vote() { choix = 1, prenom = "JP" } } } };
+        }
         
         [HttpGet("Elections")]
         public IEnumerable<Election> Elections()
@@ -21,24 +27,24 @@ namespace VotesAPI
             return elections.Find(e => e.id == id);
         }
 		
-	[HttpPost("Elections")]
+	    [HttpPost("Elections")]
         public void Post([FromBody] Election value)
         {
-	    elections.Add(value);
+	       elections.Add(value);
         }
 	
-	// Idempotency
-	[HttpPut("Elections/{id}")]
+	    // Idempotency
+	    [HttpPut("Elections/{id}")]
         public void Put(string id, [FromBody] Election value)
         {
-	    elections.RemoveAll(e => e.id == id);
-	    elections.Add(value);
+	       elections.RemoveAll(e => e.id == id);
+	       elections.Add(value);
         }
 	
-	[HttpPost("Elections/{id}/Votes")]
+	   [HttpPost("Elections/{id}/Votes")]
         public void Post(string id, [FromBody] Vote value)
         {
-	    elections.Find(e => e.id == id).votes.Add(value);
+	       elections.Find(e => e.id == id).votes.Add(value);
         }
     }
 }
