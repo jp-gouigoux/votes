@@ -1,4 +1,4 @@
-FROM jpgouigoux/aspnet:1.0.0-beta4
+FROM aspnetbase
 ADD /src /app
 WORKDIR /app
 RUN ["dnu", "restore"]

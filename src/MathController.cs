@@ -8,6 +8,12 @@ namespace VotesAPI
     public class VotesController : Controller
     {   
         private static List<Election> elections = new List<Election>() { new Election() { id = "BDE", votes = new List<Vote>() { new Vote() { choix = 1, prenom = "JP" } } } };
+
+        [HttpPut("Elections")]
+        public Reset()
+        {
+            elections = new List<Election>() { new Election() { id = "BDE", votes = new List<Vote>() { new Vote() { choix = 1, prenom = "JP" } } } };
+        }
         
         [HttpGet("Elections")]
         public IEnumerable<Election> Elections()
